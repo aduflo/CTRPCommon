@@ -24,4 +24,14 @@ public struct Area: Codable {
         case mountain
         case pacific
     }
+    
+    public init(id: String,
+                name: String,
+                coordinate: Coordinate,
+                zone: Zone) {
+        self.id = id
+        self.name = name
+        self.coordinate = coordinate
+        self.zone = zone
+    }
 }
