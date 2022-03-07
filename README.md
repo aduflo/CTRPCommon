@@ -1,3 +1,3 @@
 # WCTRPCommon
 
-A description of this package.
+Common components for the `WhenCanTheRocksPlay` project.
