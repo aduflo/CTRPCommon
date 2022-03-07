@@ -7,13 +7,13 @@
 
 import Foundation
 
-public struct Area {
+public struct Area: Codable {
     let id: String
     let name: String
     let coordinate: Coordinate
     let zone: Zone
     
-    public enum Zone: String, CaseIterable {
+    public enum Zone: String, CaseIterable, Codable {
         case eastern
         case central
         case mountain
@@ -30,7 +30,7 @@ public struct Area {
         self.zone = zone
     }
     
-    public struct Coordinate {
+    public struct Coordinate: Codable {
         let latitude: String
         let longitude: String
     }
