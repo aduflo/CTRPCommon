@@ -12,8 +12,8 @@ public struct Area: Codable {
     public let zone: Zone
     
     public struct Coordinate: Codable {
-        let latitude: String
-        let longitude: String
+        public let latitude: String
+        public let longitude: String
     }
     
     public enum Zone: String, CaseIterable, Codable {
