@@ -5,8 +5,6 @@
 //  Created by Adam Duflo on 3/6/22.
 //
 
-import Foundation
-
 public struct Area: Codable {
     public let id: String
     public let name: String
