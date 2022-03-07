@@ -7,4 +7,8 @@
 
 public struct V1HealthResponse: Codable {
     public let message: String
+    
+    public init(message: String) {
+        self.message = message
+    }
 }

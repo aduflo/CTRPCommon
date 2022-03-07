@@ -7,4 +7,8 @@
 
 public struct AreasResponse: Codable {
     public let areas: Areas
+    
+    public init(areas: Areas) {
+        self.areas = areas
+    }
 }

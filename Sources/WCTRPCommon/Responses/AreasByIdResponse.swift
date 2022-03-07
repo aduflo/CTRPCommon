@@ -7,4 +7,8 @@
 
 public struct AreasByIdResponse: Codable {
     public let id: String
+    
+    public init(id: String) {
+        self.id = id
+    }
 }
