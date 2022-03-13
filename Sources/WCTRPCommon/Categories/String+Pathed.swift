@@ -8,5 +8,6 @@
 import Foundation
 
 extension String {
+    /// Appends `component` to `self` in a path-esque manner.
     public func pathed(_ component: String...) -> String { self + (self.last == "/" ? "" : "/") + component.joined(separator: "/") }
 }
