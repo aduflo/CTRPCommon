@@ -16,8 +16,8 @@ class AreaTests: XCTestCase {
         // Setup
         let id = "id"
         let name = "name"
-        let coordinate = Area.Coordinate(latitude: "12.34", longitude: "-12.34")
-        let zone = Area.Zone.eastern
+        let coordinate = Coordinate(latitude: "12.34", longitude: "-12.34")
+        let zone = Zone.eastern
         let area = Area(id: id,
                         name: name,
                         coordinate: coordinate,

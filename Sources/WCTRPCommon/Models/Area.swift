@@ -11,18 +11,6 @@ public struct Area: Codable {
     public let coordinate: Coordinate
     public let zone: Zone
     
-    public struct Coordinate: Codable {
-        public let latitude: String
-        public let longitude: String
-    }
-    
-    public enum Zone: String, CaseIterable, Codable {
-        case eastern
-        case central
-        case mountain
-        case pacific
-    }
-    
     public init(id: String,
                 name: String,
                 coordinate: Coordinate,

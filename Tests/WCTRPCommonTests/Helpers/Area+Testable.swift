@@ -13,8 +13,8 @@ extension Area: Equatable {
     }
 }
 
-extension Area.Coordinate: Equatable {
-    public static func == (lhs: Area.Coordinate, rhs: Area.Coordinate) -> Bool {
+extension Coordinate: Equatable {
+    public static func == (lhs: Coordinate, rhs: Coordinate) -> Bool {
         return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
