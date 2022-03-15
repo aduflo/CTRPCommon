@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Encodable {
+public extension Encodable {
     /// Transforms `self` into a JSON-encoded `String` representation.
     func toJSONString() -> String? {
         guard let data = try? JSONEncoder().encode(self) else {
