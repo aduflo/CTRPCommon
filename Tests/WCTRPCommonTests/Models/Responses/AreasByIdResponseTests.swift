@@ -14,7 +14,7 @@ class AreasByIdResponseTests: XCTestCase {
     
     func test_init() {
         // Setup
-        let id = "id"
+        let id = UUID()
         let response = AreasByIdResponse(id: id)
         
         // Verification

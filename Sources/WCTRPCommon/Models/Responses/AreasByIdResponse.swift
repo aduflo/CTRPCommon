@@ -5,10 +5,12 @@
 //  Created by Adam Duflo on 3/6/22.
 //
 
+import Foundation
+
 public struct AreasByIdResponse: Codable {
-    public let id: String
+    public let id: UUID
     
-    public init(id: String) {
+    public init(id: UUID) {
         self.id = id
     }
 }

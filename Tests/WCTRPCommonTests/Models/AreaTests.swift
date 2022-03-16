@@ -14,7 +14,7 @@ class AreaTests: XCTestCase {
     
     func test_init() {
         // Setup
-        let id = "id"
+        let id = UUID()
         let name = "name"
         let coordinate = Coordinate(latitude: "12.34", longitude: "-12.34")
         let zone = Zone.eastern
