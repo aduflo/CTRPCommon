@@ -9,8 +9,11 @@ import Foundation
 
 public struct AreasByIdResponse: Codable {
     public let id: UUID
+    public let jsonString: String
     
-    public init(id: UUID) {
+    public init(id: UUID,
+                jsonString: String) {
         self.id = id
+        self.jsonString = jsonString
     }
 }
