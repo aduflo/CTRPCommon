@@ -5,7 +5,7 @@
 //  Created by Adam Duflo on 3/6/22.
 //
 
-@testable import WCTRPCommon
+@testable import CTRPCommon
 import XCTest
 
 class AreaTests: XCTestCase {

@@ -1,3 +1,3 @@
-# WCTRPCommon
+# CTRPCommon
 
-Common components for the `WhenCanTheRocksPlay` project.
+Common components for the `CanTheRocksPlay` project.
