@@ -24,6 +24,12 @@ public extension AreasByIdResponse {
     struct Weather: Codable {
         let today: Today
         let recentHistory: RecentHistory
+
+        public init(today: Today,
+                    recentHistory: RecentHistory) {
+            self.today = today
+            self.recentHistory = recentHistory
+        }
     }
 
     struct Today: Codable {
