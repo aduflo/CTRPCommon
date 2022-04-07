@@ -19,9 +19,9 @@ public struct AreasByIdResponse: Codable {
 }
 
 public extension AreasByIdResponse {
-    typealias Metadata = Area
+    public typealias Metadata = Area
 
-    struct Weather: Codable {
+    public struct Weather: Codable {
         let today: Today
         let recentHistory: RecentHistory
 
@@ -37,20 +37,50 @@ public extension AreasByIdResponse {
         let daytime: DayUnit
         let nighttime: DayUnit
 
+        public init(temperatures: Temperatures,
+                    daytime: DayUnit,
+                    nighttime: DayUnit) {
+            self.temperatures = temperatures
+            self.daytime = daytime
+            self.nighttime = nighttime
+        }
+
         struct Temperatures: Codable {
             let high: ValueUnit
             let low: ValueUnit
+
+            public init(high: ValueUnit,
+                        low: ValueUnit) {
+                self.high = high
+                self.low = low
+            }
         }
 
         struct DayUnit: Codable {
             let message: String
             let percipitation: Percipitation
 
+            public init(message: String,
+                        percipitation: Percipitation) {
+                self.message = message
+                self.percipitation = percipitation
+            }
+
             struct Percipitation: Codable {
                 let probability: Int
                 let type: PercipitationType?
                 let intensity: Intensity?
                 let amount: ValueUnit
+
+                public init(probability: Int,
+                            type: PercipitationType?,
+                            intensity: Intensity?,
+                            amount: ValueUnit) {
+                    self.probability = probability
+                    self.type = type
+                    self.intensity = intensity
+                    self.amount = amount
+                }
 
                 enum PercipitationType: String, Codable {
                     case rain
@@ -76,4 +106,10 @@ public extension AreasByIdResponse {
 public struct ValueUnit: Codable {
     public let value: Double
     public let unit: String
+
+    public init(value: Double,
+                unit: String) {
+        self.value = value
+        self.unit = unit
+    }
 }
