@@ -32,7 +32,7 @@ public extension AreasByIdResponse {
         }
     }
 
-    struct Today: Codable {
+    public struct Today: Codable {
         let temperatures: Temperatures
         let daytime: DayUnit
         let nighttime: DayUnit
@@ -45,7 +45,7 @@ public extension AreasByIdResponse {
             self.nighttime = nighttime
         }
 
-        struct Temperatures: Codable {
+        public struct Temperatures: Codable {
             let high: ValueUnit
             let low: ValueUnit
 
@@ -56,7 +56,7 @@ public extension AreasByIdResponse {
             }
         }
 
-        struct DayUnit: Codable {
+        public struct DayUnit: Codable {
             let message: String
             let percipitation: Percipitation
 
@@ -66,7 +66,7 @@ public extension AreasByIdResponse {
                 self.percipitation = percipitation
             }
 
-            struct Percipitation: Codable {
+            public struct Percipitation: Codable {
                 let probability: Int
                 let type: PercipitationType?
                 let intensity: Intensity?
