@@ -102,16 +102,16 @@ public extension AreasByIdResponse {
 
             }
         }
-    }
-}
 
-public struct ValueUnit: Codable {
-    public let value: Double
-    public let unit: String
+        public struct ValueUnit: Codable {
+            public let value: Double
+            public let unit: String
 
-    public init(value: Double,
-                unit: String) {
-        self.value = value
-        self.unit = unit
+            public init(value: Double,
+                        unit: String) {
+                self.value = value
+                self.unit = unit
+            }
+        }
     }
 }
