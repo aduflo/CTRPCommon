@@ -30,77 +30,77 @@ public extension AreasByIdResponse {
             self.today = today
             self.recentHistory = recentHistory
         }
-    }
 
-    public struct Today: Codable {
-        public let temperatures: Temperatures
-        public let daytime: DayUnit
-        public let nighttime: DayUnit
+        public struct Today: Codable {
+            public let temperatures: Temperatures
+            public let daytime: DayUnit
+            public let nighttime: DayUnit
 
-        public init(temperatures: Temperatures,
-                    daytime: DayUnit,
-                    nighttime: DayUnit) {
-            self.temperatures = temperatures
-            self.daytime = daytime
-            self.nighttime = nighttime
-        }
+            public init(temperatures: Temperatures,
+                        daytime: DayUnit,
+                        nighttime: DayUnit) {
+                self.temperatures = temperatures
+                self.daytime = daytime
+                self.nighttime = nighttime
+            }
 
-        public struct Temperatures: Codable {
-            public let high: ValueUnit
-            public let low: ValueUnit
+            public struct Temperatures: Codable {
+                public let high: ValueUnit
+                public let low: ValueUnit
 
-            public init(high: ValueUnit,
-                        low: ValueUnit) {
-                self.high = high
-                self.low = low
+                public init(high: ValueUnit,
+                            low: ValueUnit) {
+                    self.high = high
+                    self.low = low
+                }
+            }
+
+            public struct DayUnit: Codable {
+                public let message: String
+                public let percipitation: Percipitation
+
+                public init(message: String,
+                            percipitation: Percipitation) {
+                    self.message = message
+                    self.percipitation = percipitation
+                }
+
+                public struct Percipitation: Codable {
+                    public let probability: Int
+                    public let type: PercipitationType?
+                    public let intensity: Intensity?
+                    public let amount: ValueUnit
+
+                    public init(probability: Int,
+                                type: PercipitationType?,
+                                intensity: Intensity?,
+                                amount: ValueUnit) {
+                        self.probability = probability
+                        self.type = type
+                        self.intensity = intensity
+                        self.amount = amount
+                    }
+
+                    public enum PercipitationType: String, Codable {
+                        case rain
+                        case ice
+                        case snow
+                        case mixed
+                    }
+
+                    public enum Intensity: String, Codable {
+                        case light
+                        case moderate
+                        case heavy
+                    }
+                }
             }
         }
 
-        public struct DayUnit: Codable {
-            public let message: String
-            public let percipitation: Percipitation
+        public struct RecentHistory: Codable {
+            public init() {
 
-            public init(message: String,
-                        percipitation: Percipitation) {
-                self.message = message
-                self.percipitation = percipitation
             }
-
-            public struct Percipitation: Codable {
-                public let probability: Int
-                public let type: PercipitationType?
-                public let intensity: Intensity?
-                public let amount: ValueUnit
-
-                public init(probability: Int,
-                            type: PercipitationType?,
-                            intensity: Intensity?,
-                            amount: ValueUnit) {
-                    self.probability = probability
-                    self.type = type
-                    self.intensity = intensity
-                    self.amount = amount
-                }
-
-                public enum PercipitationType: String, Codable {
-                    case rain
-                    case ice
-                    case snow
-                    case mixed
-                }
-
-                public enum Intensity: String, Codable {
-                    case light
-                    case moderate
-                    case heavy
-                }
-            }
-        }
-    }
-
-    public struct RecentHistory: Codable {
-        public init() {
-            
         }
     }
 }
