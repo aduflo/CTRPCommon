@@ -22,8 +22,8 @@ public extension AreasByIdResponse {
     public typealias Metadata = Area
 
     public struct Weather: Codable {
-        let today: Today
-        let recentHistory: RecentHistory
+        public let today: Today
+        public let recentHistory: RecentHistory
 
         public init(today: Today,
                     recentHistory: RecentHistory) {
@@ -33,9 +33,9 @@ public extension AreasByIdResponse {
     }
 
     public struct Today: Codable {
-        let temperatures: Temperatures
-        let daytime: DayUnit
-        let nighttime: DayUnit
+        public let temperatures: Temperatures
+        public let daytime: DayUnit
+        public let nighttime: DayUnit
 
         public init(temperatures: Temperatures,
                     daytime: DayUnit,
@@ -46,8 +46,8 @@ public extension AreasByIdResponse {
         }
 
         public struct Temperatures: Codable {
-            let high: ValueUnit
-            let low: ValueUnit
+            public let high: ValueUnit
+            public let low: ValueUnit
 
             public init(high: ValueUnit,
                         low: ValueUnit) {
@@ -57,8 +57,8 @@ public extension AreasByIdResponse {
         }
 
         public struct DayUnit: Codable {
-            let message: String
-            let percipitation: Percipitation
+            public let message: String
+            public let percipitation: Percipitation
 
             public init(message: String,
                         percipitation: Percipitation) {
@@ -67,10 +67,10 @@ public extension AreasByIdResponse {
             }
 
             public struct Percipitation: Codable {
-                let probability: Int
-                let type: PercipitationType?
-                let intensity: Intensity?
-                let amount: ValueUnit
+                public let probability: Int
+                public let type: PercipitationType?
+                public let intensity: Intensity?
+                public let amount: ValueUnit
 
                 public init(probability: Int,
                             type: PercipitationType?,
@@ -82,14 +82,14 @@ public extension AreasByIdResponse {
                     self.amount = amount
                 }
 
-                enum PercipitationType: String, Codable {
+                public enum PercipitationType: String, Codable {
                     case rain
                     case ice
                     case snow
                     case mixed
                 }
 
-                enum Intensity: String, Codable {
+                public enum Intensity: String, Codable {
                     case light
                     case moderate
                     case heavy
@@ -98,8 +98,10 @@ public extension AreasByIdResponse {
         }
     }
 
-    struct RecentHistory: Codable {
-
+    public struct RecentHistory: Codable {
+        public init() {
+            
+        }
     }
 }
 
