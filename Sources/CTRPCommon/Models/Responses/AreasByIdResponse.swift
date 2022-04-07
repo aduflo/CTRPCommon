@@ -19,9 +19,9 @@ public struct AreasByIdResponse: Codable {
 }
 
 public extension AreasByIdResponse {
-    public typealias Metadata = Area
+    typealias Metadata = Area
 
-    public struct Weather: Codable {
+    struct Weather: Codable {
         public let today: Today
         public let recentHistory: RecentHistory
 
