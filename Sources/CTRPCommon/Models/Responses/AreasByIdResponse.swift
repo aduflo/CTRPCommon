@@ -67,21 +67,21 @@ public extension AreasByIdResponse {
 
                 public struct Percipitation: Codable {
                     public let probability: Int
-                    public let type: PercipitationType?
+                    public let kind: Kind?
                     public let intensity: Intensity?
                     public let amount: ValueUnit
 
                     public init(probability: Int,
-                                type: PercipitationType?,
+                                kind: Kind?,
                                 intensity: Intensity?,
                                 amount: ValueUnit) {
                         self.probability = probability
-                        self.type = type
+                        self.kind = kind
                         self.intensity = intensity
                         self.amount = amount
                     }
 
-                    public enum PercipitationType: String, Codable {
+                    public enum Kind: String, Codable {
                         case rain
                         case ice
                         case snow
