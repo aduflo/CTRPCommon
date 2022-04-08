@@ -32,19 +32,19 @@ public extension AreasByIdResponse {
         }
 
         public struct Today: Codable {
-            public let temperatures: Temperatures
+            public let temperature: Temperature
             public let daytime: DayUnit
             public let nighttime: DayUnit
 
-            public init(temperatures: Temperatures,
+            public init(temperature: Temperature,
                         daytime: DayUnit,
                         nighttime: DayUnit) {
-                self.temperatures = temperatures
+                self.temperature = temperature
                 self.daytime = daytime
                 self.nighttime = nighttime
             }
 
-            public struct Temperatures: Codable {
+            public struct Temperature: Codable {
                 public let high: ValueUnit<Scale>
                 public let low: ValueUnit<Scale>
 
