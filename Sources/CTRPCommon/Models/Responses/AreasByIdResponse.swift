@@ -45,13 +45,18 @@ public extension AreasByIdResponse {
             }
 
             public struct Temperatures: Codable {
-                public let high: ValueUnit
-                public let low: ValueUnit
+                public let high: ValueUnit<Scale>
+                public let low: ValueUnit<Scale>
 
-                public init(high: ValueUnit,
-                            low: ValueUnit) {
+                public init(high: ValueUnit<Scale>,
+                            low: ValueUnit<Scale>) {
                     self.high = high
                     self.low = low
+                }
+
+                public enum Scale: String, Codable {
+                    case fahrenheit = "F"
+                    case celsius = "C"
                 }
             }
 
@@ -69,12 +74,12 @@ public extension AreasByIdResponse {
                     public let probability: Int
                     public let kind: Kind?
                     public let intensity: Intensity?
-                    public let amount: ValueUnit
+                    public let amount: ValueUnit<LengthUnit>
 
                     public init(probability: Int,
                                 kind: Kind?,
                                 intensity: Intensity?,
-                                amount: ValueUnit) {
+                                amount: ValueUnit<LengthUnit>) {
                         self.probability = probability
                         self.kind = kind
                         self.intensity = intensity
@@ -93,6 +98,11 @@ public extension AreasByIdResponse {
                         case moderate
                         case heavy
                     }
+
+                    public enum LengthUnit: String, Codable {
+                        case inch = "in"
+                        case millimetre = "mm"
+                    }
                 }
             }
         }
@@ -103,12 +113,12 @@ public extension AreasByIdResponse {
             }
         }
 
-        public struct ValueUnit: Codable {
+        public struct ValueUnit<Unit: Codable>: Codable {
             public let value: Double
-            public let unit: String
+            public let unit: Unit
 
             public init(value: Double,
-                        unit: String) {
+                        unit: Unit) {
                 self.value = value
                 self.unit = unit
             }
