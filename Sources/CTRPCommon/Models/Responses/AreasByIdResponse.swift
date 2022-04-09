@@ -62,15 +62,15 @@ public extension AreasByIdResponse {
 
             public struct DayUnit: Codable {
                 public let message: String
-                public let percipitation: Percipitation
+                public let precipitation: Precipitation
 
                 public init(message: String,
-                            percipitation: Percipitation) {
+                            precipitation: Precipitation) {
                     self.message = message
-                    self.percipitation = percipitation
+                    self.precipitation = precipitation
                 }
 
-                public struct Percipitation: Codable {
+                public struct Precipitation: Codable {
                     public let probability: Int
                     public let kind: Kind?
                     public let intensity: Intensity?
