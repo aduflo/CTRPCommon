@@ -23,12 +23,12 @@ public extension AreasByIdResponse {
 
     struct Weather: Codable {
         public let today: Today
-        public let recentDailySummaries: [DailySummary]
+        public let dailyHistories: [DailyHistory]
 
         public init(today: Today,
-                    recentDailySummaries: [DailySummary]) {
+                    dailyHistories: [DailyHistory]) {
             self.today = today
-            self.recentDailySummaries = recentDailySummaries
+            self.dailyHistories = dailyHistories
         }
 
         public struct Today: Codable {
@@ -97,7 +97,7 @@ public extension AreasByIdResponse {
             }
         }
 
-        public struct DailySummary: Codable {
+        public struct DailyHistory: Codable {
             public let date: String
             public let precipitation: Precipitation
 
