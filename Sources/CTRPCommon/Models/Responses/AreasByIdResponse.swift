@@ -23,12 +23,12 @@ public extension AreasByIdResponse {
 
     struct Weather: Codable {
         public let today: Today
-        public let recentHistory: RecentHistory
+        public let recentDailySummaries: [DailySummary]
 
         public init(today: Today,
-                    recentHistory: RecentHistory) {
+                    recentDailySummaries: [DailySummary]) {
             self.today = today
-            self.recentHistory = recentHistory
+            self.recentDailySummaries = recentDailySummaries
         }
 
         public struct Today: Codable {
@@ -97,39 +97,31 @@ public extension AreasByIdResponse {
             }
         }
 
-        public struct RecentHistory: Codable {
-            public let dailySummaries: [DailySummary]
+        public struct DailySummary: Codable {
+            public let date: String
+            public let precipitation: Precipitation
 
-            public init(dailySummaries: [DailySummary]) {
-                self.dailySummaries = dailySummaries
+            public init(date: String,
+                        precipitation: Precipitation) {
+                self.date = date
+                self.precipitation = precipitation
             }
 
-            public struct DailySummary: Codable {
-                public let date: String
-                public let precipitation: Precipitation
+            public struct Precipitation: Codable {
+                public let amount: Amount
 
-                public init(date: String,
-                            precipitation: Precipitation) {
-                    self.date = date
-                    self.precipitation = precipitation
+                public init(amount: Amount) {
+                    self.amount = amount
                 }
 
-                public struct Precipitation: Codable {
-                    public let amount: Amount
+                public struct Amount: Codable {
+                    public let imperial: ValueUnit<DepthUnit>
+                    public let metric: ValueUnit<DepthUnit>
 
-                    public init(amount: Amount) {
-                        self.amount = amount
-                    }
-
-                    public struct Amount: Codable {
-                        public let imperial: ValueUnit<DepthUnit>
-                        public let metric: ValueUnit<DepthUnit>
-
-                        public init(imperial: ValueUnit<DepthUnit>,
-                                    metric: ValueUnit<DepthUnit>) {
-                            self.imperial = imperial
-                            self.metric = metric
-                        }
+                    public init(imperial: ValueUnit<DepthUnit>,
+                                metric: ValueUnit<DepthUnit>) {
+                        self.imperial = imperial
+                        self.metric = metric
                     }
                 }
             }
