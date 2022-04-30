@@ -33,34 +33,29 @@ public extension AreasByIdResponse {
 
         public struct Today: Codable {
             public let temperature: Temperature
-            public let daytime: DayUnit
-            public let nighttime: DayUnit
+            public let daytimeInfo: DayInfo
+            public let nighttimeInfo: DayInfo
 
             public init(temperature: Temperature,
-                        daytime: DayUnit,
-                        nighttime: DayUnit) {
+                        daytimeInfo: DayInfo,
+                        nighttimeInfo: DayInfo) {
                 self.temperature = temperature
-                self.daytime = daytime
-                self.nighttime = nighttime
+                self.daytimeInfo = daytimeInfo
+                self.nighttimeInfo = nighttimeInfo
             }
 
             public struct Temperature: Codable {
-                public let high: ValueUnit<Scale>
-                public let low: ValueUnit<Scale>
+                public let high: ValueUnit<ScaleUnit>
+                public let low: ValueUnit<ScaleUnit>
 
-                public init(high: ValueUnit<Scale>,
-                            low: ValueUnit<Scale>) {
+                public init(high: ValueUnit<ScaleUnit>,
+                            low: ValueUnit<ScaleUnit>) {
                     self.high = high
                     self.low = low
                 }
-
-                public enum Scale: String, Codable {
-                    case fahrenheit = "F"
-                    case celsius = "C"
-                }
             }
 
-            public struct DayUnit: Codable {
+            public struct DayInfo: Codable {
                 public let message: String
                 public let precipitation: Precipitation
 
@@ -74,12 +69,12 @@ public extension AreasByIdResponse {
                     public let probability: Int
                     public let kind: Kind?
                     public let intensity: Intensity?
-                    public let amount: ValueUnit<LengthUnit>
+                    public let amount: ValueUnit<DepthUnit>
 
                     public init(probability: Int,
                                 kind: Kind?,
                                 intensity: Intensity?,
-                                amount: ValueUnit<LengthUnit>) {
+                                amount: ValueUnit<DepthUnit>) {
                         self.probability = probability
                         self.kind = kind
                         self.intensity = intensity
@@ -98,18 +93,45 @@ public extension AreasByIdResponse {
                         case moderate
                         case heavy
                     }
-
-                    public enum LengthUnit: String, Codable {
-                        case inch = "in"
-                        case millimetre = "mm"
-                    }
                 }
             }
         }
 
         public struct RecentHistory: Codable {
-            public init() {
+            public let dailySummaries: [DailySummary]
 
+            public init(dailySummaries: [DailySummary]) {
+                self.dailySummaries = dailySummaries
+            }
+
+            public struct DailySummary: Codable {
+                public let date: String
+                public let precipitation: Precipitation
+
+                public init(date: String,
+                            precipitation: Precipitation) {
+                    self.date = date
+                    self.precipitation = precipitation
+                }
+
+                public struct Precipitation: Codable {
+                    public let amount: Amount
+
+                    public init(amount: Amount) {
+                        self.amount = amount
+                    }
+
+                    public struct Amount: Codable {
+                        public let imperial: ValueUnit<DepthUnit>
+                        public let metric: ValueUnit<DepthUnit>
+
+                        public init(imperial: ValueUnit<DepthUnit>,
+                                    metric: ValueUnit<DepthUnit>) {
+                            self.imperial = imperial
+                            self.metric = metric
+                        }
+                    }
+                }
             }
         }
 
@@ -122,6 +144,16 @@ public extension AreasByIdResponse {
                 self.value = value
                 self.unit = unit
             }
+        }
+
+        public enum ScaleUnit: String, Codable {
+            case fahrenheit = "F"
+            case celsius = "C"
+        }
+
+        public enum DepthUnit: String, Codable {
+            case inch = "in"
+            case millimetre = "mm"
         }
     }
 }
