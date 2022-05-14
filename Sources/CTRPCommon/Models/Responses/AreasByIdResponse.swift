@@ -11,23 +11,23 @@ public struct AreasByIdResponse: Codable {
     public let metadata: Metadata
     public let canTheRocksPlay: Bool
     public let daysSincePrecipitation: Int?
-    public let weather: Weather
+    public let weatherData: WeatherData
     
     public init(metadata: Metadata,
                 canTheRocksPlay: Bool,
                 daysSincePrecipitation: Int?,
-                weather: Weather) {
+                weatherData: WeatherData) {
         self.metadata = metadata
         self.canTheRocksPlay = canTheRocksPlay
         self.daysSincePrecipitation = daysSincePrecipitation
-        self.weather = weather
+        self.weatherData = weatherData
     }
 }
 
 public extension AreasByIdResponse {
     typealias Metadata = Area
 
-    struct Weather: Codable {
+    struct WeatherData: Codable {
         public let today: Today
         public let dailyHistories: [DailyHistory]
 
@@ -39,15 +39,15 @@ public extension AreasByIdResponse {
 
         public struct Today: Codable {
             public let temperature: Temperature
-            public let daytimeInfo: DayInfo
-            public let nighttimeInfo: DayInfo
+            public let daytime: DayInfo
+            public let nighttime: DayInfo
 
             public init(temperature: Temperature,
-                        daytimeInfo: DayInfo,
-                        nighttimeInfo: DayInfo) {
+                        daytime: DayInfo,
+                        nighttime: DayInfo) {
                 self.temperature = temperature
-                self.daytimeInfo = daytimeInfo
-                self.nighttimeInfo = nighttimeInfo
+                self.daytime = daytime
+                self.nighttime = nighttime
             }
 
             public struct Temperature: Codable {
