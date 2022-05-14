@@ -25,8 +25,8 @@ public extension AreasByIdResponse {
     typealias Metadata = Area
 
     struct CanTheRocksPlay: Codable {
-        let directive: Directive
-        let message: String
+        public let directive: Directive
+        public let message: String
 
         public init(directive: Directive,
                     message: String) {
