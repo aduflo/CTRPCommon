@@ -9,17 +9,31 @@ import Foundation
 
 public struct AreasByIdResponse: Codable {
     public let metadata: Metadata
+    public let context: Context
     public let weather: Weather
     
     public init(metadata: Metadata,
+                context: Context,
                 weather: Weather) {
         self.metadata = metadata
+        self.context = context
         self.weather = weather
     }
 }
 
 public extension AreasByIdResponse {
     typealias Metadata = Area
+
+    struct Context: Codable {
+        public let canTheRocksPlay: Bool
+        public let daysSincePrecipitation: Int?
+
+        public init(canTheRocksPlay: Bool,
+                    daysSincePrecipitation: Int?) {
+            self.canTheRocksPlay = canTheRocksPlay
+            self.daysSincePrecipitation = daysSincePrecipitation
+        }
+    }
 
     struct Weather: Codable {
         public let today: Today
