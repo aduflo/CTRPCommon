@@ -24,10 +24,21 @@ public struct AreasByIdResponse: Codable {
 public extension AreasByIdResponse {
     typealias Metadata = Area
 
-    enum CanTheRocksPlay: String, Codable {
-        case yes
-        case no
-        case maybe
+    struct CanTheRocksPlay: Codable {
+        let directive: Directive
+        let message: String
+
+        public init(directive: Directive,
+                    message: String) {
+            self.directive = directive
+            self.message = message
+        }
+
+        public enum Directive: String, Codable {
+            case yes
+            case no
+            case maybe
+        }
     }
 
     struct WeatherData: Codable {
