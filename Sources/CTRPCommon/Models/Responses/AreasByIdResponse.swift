@@ -9,23 +9,26 @@ import Foundation
 
 public struct AreasByIdResponse: Codable {
     public let metadata: Metadata
-    public let canTheRocksPlay: Bool
-    public let daysSincePrecipitation: Int?
+    public let canTheRocksPlay: CanTheRocksPlay
     public let weatherData: WeatherData
     
     public init(metadata: Metadata,
-                canTheRocksPlay: Bool,
-                daysSincePrecipitation: Int?,
+                canTheRocksPlay: CanTheRocksPlay,
                 weatherData: WeatherData) {
         self.metadata = metadata
         self.canTheRocksPlay = canTheRocksPlay
-        self.daysSincePrecipitation = daysSincePrecipitation
         self.weatherData = weatherData
     }
 }
 
 public extension AreasByIdResponse {
     typealias Metadata = Area
+
+    enum CanTheRocksPlay: String, Codable {
+        case yes
+        case no
+        case maybe
+    }
 
     struct WeatherData: Codable {
         public let today: Today
