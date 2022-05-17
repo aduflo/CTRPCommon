@@ -87,18 +87,25 @@ public extension AreasByIdResponse {
 
                 public struct Precipitation: Codable {
                     public let probability: Int
-                    public let type: PrecipitationType?
+                    public let kind: Kind?
                     public let intensity: Intensity?
                     public let amount: ValueUnit<DepthUnit>
 
                     public init(probability: Int,
-                                type: PrecipitationType?,
+                                kind: Kind?,
                                 intensity: Intensity?,
                                 amount: ValueUnit<DepthUnit>) {
                         self.probability = probability
-                        self.type = type
+                        self.kind = kind
                         self.intensity = intensity
                         self.amount = amount
+                    }
+
+                    public enum Kind: String, Codable {
+                        case rain
+                        case ice
+                        case snow
+                        case mixed
                     }
 
                     public enum Intensity: String, Codable {
@@ -121,12 +128,9 @@ public extension AreasByIdResponse {
             }
 
             public struct Precipitation: Codable {
-                public let type: PrecipitationType?
                 public let amount: Amount
 
-                public init(type: PrecipitationType?,
-                            amount: Amount) {
-                    self.type = type
+                public init(amount: Amount) {
                     self.amount = amount
                 }
 
@@ -141,13 +145,6 @@ public extension AreasByIdResponse {
                     }
                 }
             }
-        }
-
-        public enum PrecipitationType: String, Codable {
-            case rain
-            case ice
-            case snow
-            case mixed
         }
 
         public struct ValueUnit<Unit: Codable>: Codable {
